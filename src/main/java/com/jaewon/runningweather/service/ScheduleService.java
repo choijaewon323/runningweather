@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -19,10 +23,15 @@ public class ScheduleService {
         this.memberRepository = memberRepository;
     }
 
-    @Scheduled(cron = "0 * * * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0 0-23 * * *", zone = "Asia/Seoul")
     @Transactional
-    public void run0() throws JSONException, IOException {
-        List<Member> memberList = memberRepository.findAll();
+    public void run() throws JSONException, IOException {
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
+        String reservedTime = now.format(formatter);
+
+        List<Member> memberList = memberRepository.findByReservedTime(reservedTime);
 
         MailProcessor.process(memberList);
     }

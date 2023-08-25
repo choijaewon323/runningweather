@@ -1,7 +1,7 @@
 package com.jaewon.runningweather.service.utils;
 
 import com.jaewon.runningweather.dto.WeatherResponseDto;
-import com.jaewon.runningweather.service.secret.SecretKey;
+import com.jaewon.runningweather.service.security.SecretKey;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

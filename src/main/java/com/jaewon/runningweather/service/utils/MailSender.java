@@ -1,6 +1,7 @@
 package com.jaewon.runningweather.service.utils;
 
-import com.jaewon.runningweather.service.secret.SenderInfo;
+
+import com.jaewon.runningweather.service.security.SenderInfo;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;
