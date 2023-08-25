@@ -2,6 +2,7 @@ package com.jaewon.runningweather;
 
 import com.jaewon.runningweather.service.utils.ApiExplorer;
 import com.jaewon.runningweather.service.utils.MailSender;
+import com.jaewon.runningweather.service.utils.TimeConverter;
 import org.json.JSONException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

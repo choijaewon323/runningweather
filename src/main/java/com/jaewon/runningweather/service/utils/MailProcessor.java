@@ -29,13 +29,15 @@ public class MailProcessor {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             Calendar calendar = Calendar.getInstance();
 
-            if (reservedTime.equals("2300")) {
+            if (reservedTime.equals("0000")) {
                 calendar.add(Calendar.DATE, -1);
             }
 
             String today = sdf.format(calendar.getTime());
 
-            List<WeatherResponseDto> responseDtos = ApiExplorer.explore(today, reservedTime, locationVO.getNx(), locationVO.getNy());
+            String subTime = TimeConverter.convert(reservedTime);
+
+            List<WeatherResponseDto> responseDtos = ApiExplorer.explore(today, subTime, locationVO.getNx(), locationVO.getNy());
 
             StringBuilder result = new StringBuilder();
 
